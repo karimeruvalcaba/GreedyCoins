@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unistd.h>
 using namespace std;
 
 void Greedy(vector<int> &coins, int P, int Q){
@@ -31,15 +32,41 @@ void Greedy(vector<int> &coins, int P, int Q){
     }
 }
 
-int main(){
-    
+void ForTxt() {
+    string line;
+    while (getline(cin, line)) {
+        if (line.empty()) {
+            continue;
+        }
+
+        int n = stoi(line); 
+        vector<int> coins(n);
+
+        for (int i = 0; i < n; ++i) {
+            getline(cin, line);
+            coins[i] = stoi(line);
+        }
+
+        int P, Q;
+        getline(cin, line);
+        P = stoi(line); 
+        getline(cin, line);
+        Q = stoi(line); 
+
+        Greedy(coins, P, Q);
+
+        cout << endl;
+    }
+}
+
+void Manual() {
     int n, P, Q;
-    cout << "Ingrese el número de denominaciones de monedas: " << endl;
+    cout << "Ingrese el número de denominaciones de monedas: ";
     cin >> n;
 
     vector<int> coins(n);
     cout << "Ingrese las denominaciones de las monedas, una por línea: " << endl;
-    for (int i=0; i<n; ++i){
+    for (int i = 0; i < n; ++i) {
         cin >> coins[i];
     }
 
@@ -49,7 +76,16 @@ int main(){
     cin >> Q;
 
     Greedy(coins, P, Q);
+}
+
+int main() {
+    // Para ingresar los valores manualmente
+    if (isatty(fileno(stdin))) {
+        Manual();
+    } else {
+        // Para archivos txt
+        ForTxt();
+    }
 
     return 0;
-
 }

@@ -1,7 +1,7 @@
 /*
-Carlos Ernesto Soto Alarcón
-Karime Itzel Ruvalcaba Pérez
-Sergio Alfonso Casillas Santoyo
+Carlos Ernesto Soto Alarcón A01747990
+Karime Itzel Ruvalcaba Pérez A01656188
+Sergio Alfonso Casillas Santoyo A01424863
 */
 #include <iostream>
 #include <vector>
